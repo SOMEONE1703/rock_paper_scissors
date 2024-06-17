@@ -1,0 +1,65 @@
+.biggers{
+  margin:20px;
+  background-color: orange;
+  height: 300px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+#lobby_bigger{
+  margin:20px;
+  background-color: orange;
+  height: 300px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 15px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+}
+.some{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.loader {
+    margin-top: 20px;
+    width: 160px; /* Increase the width */
+    height: 104px; /* Increase the height */
+    --c: no-repeat linear-gradient(#000 0 0);
+    background:
+      var(--c) 0 100%,
+      var(--c) 50% 100%,
+      var(--c) 100% 100%;
+    background-size: 32px calc(100% - 32px); /* Adjust background size */
+    position: relative;
+}
+  
+.loader:before {
+  content: "";
+  position: absolute;
+  width: 32px; /* Increase width */
+  height: 32px; /* Increase height */
+  border-radius: 50%;
+  background: #000;
+  left: 0;
+  top: 0;
+  animation: 
+    l3-1 1.5s linear infinite alternate,
+    l3-2 0.75s cubic-bezier(0,400,0,400) infinite;
+}
+
+@keyframes l3-1 {
+  100% { left: calc(100% - 32px); } /* Adjust for new width */
+}
+
+@keyframes l3-2 {
+  100% { top: -0.1px; }
+}
+
+
+#span1{
+  height: 20px;
+}

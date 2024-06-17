@@ -1,0 +1,17 @@
+#butts{
+    font-size: 16px;
+    background-color: black;
+    color:orange;
+    border: 7px solid black;
+    font-weight: bold;
+    text-align: center;
+    width: 70%;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.25s ease;
+}
+#butts:active{
+    box-shadow: 0 0 rgba(0, 0, 0, 0.5);
+}

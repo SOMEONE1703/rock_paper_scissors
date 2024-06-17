@@ -1,0 +1,57 @@
+#found_bigger{
+    margin:20px;
+    background-color: orange;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+}
+#span1{
+    height: 10px;
+}
+#span2{
+    height: 10px;
+}
+#centra{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.vs{
+    height: 50px;
+    text-align: center;
+}
+.players{
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+}
+#me{
+    height: 50px;
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+.tot{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#opp{
+    height: 50px;
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+.hol{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
