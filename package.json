@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./server/bin/www",
-    "prestart": "cd client && npm run build && cd ..",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "cd client && npm run build && cd .."
   },
   "author": "Siphelele",
   "license": "ISC"
