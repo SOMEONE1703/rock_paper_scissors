@@ -12,8 +12,6 @@ class lobby {
         this.p2_id="temp";
         this.outcome=7;
         this.lobby_id = -1;
-        this.started = false;
-        this.finished=false;
         this.ready_count=0;
         this.plays=0;
         this.players=1;
@@ -90,6 +88,7 @@ function configureSocketIO(server) {
         });
         socket.on("ready",(data)=>{
             //username,id
+            console.log("me");
             const index = custom_lobbies.findIndex(car => car.lobby_id==data.id);
             console.log(index);
             if (index==-1){
@@ -115,6 +114,47 @@ function configureSocketIO(server) {
             custom_lobbies[index].ready_count--;
             io.to(custom_lobbies[index].p1_id).emit("unready",{name:data.username});
             io.to(custom_lobbies[index].p2_id).emit("unready",{name:data.username});
+        });
+
+        socket.on("play-again",(data)=>{
+            const index = custom_lobbies.findIndex(car => car.lobby_id==data.id);
+            console.log(index);
+            if (index==-1){
+                return;
+            }
+            custom_lobbies[index].ready_count=0;
+            custom_lobbies[index].p1_choice="temp";
+            custom_lobbies[index].p2_choice="temp";
+            custom_lobbies[index].plays=0;
+        });
+        socket.on("leave-lobby",(data)=>{
+            const index = custom_lobbies.findIndex(car => car.lobby_id==data.id);
+            console.log(index);
+            if (index==-1){
+                return;
+            }
+            let h=-1;
+            if (custom_lobbies[index].p1_id==socket.id){
+                custom_lobbies[index].p1_id="temp";
+                h=index;
+                if (custom_lobbies[index].p2_id!="temp"){
+                    io.to(custom_lobbies[index].p2_id).emit("opp-left",{name:custom_lobbies[index].p1});
+                    custom_lobbies[index].players--;
+                }
+            }
+            else if (custom_lobbies[index].p2_id==socket.id){
+                custom_lobbies[index].p2_id="temp";
+                h=index;
+                if (custom_lobbies[index].p1_id!="temp"){
+                    io.to(custom_lobbies[index].p1_id).emit("opp-left",{name:custom_lobbies[index].p1});
+                    custom_lobbies[index].players--;
+                }
+            }
+            if (h!=-1){
+                custom_lobbies.splice(h,1);
+            }
+            console.log(custom_lobbies);
+            
         });
 
         //#################################################################
@@ -180,8 +220,10 @@ function configureSocketIO(server) {
                 }
             }
             if (h!=-1){
+
                 custom_lobbies.splice(h,1);
             }
+            console.log(custom_lobbies);
         });
     });
 

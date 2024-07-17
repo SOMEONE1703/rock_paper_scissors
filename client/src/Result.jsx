@@ -1,6 +1,6 @@
 import "./Result.css"
 import React from 'react';
-function Result({p1,p2,mine,res,play_again}){
+function Result({p1,p2,mine,res,play_again,another}){
     let opp="question.jpg";
     if (mine==p1){
         mine=`./${p1}.png`;
@@ -18,6 +18,10 @@ function Result({p1,p2,mine,res,play_again}){
         console.log("Play again");
         play_again();
     };
+    const leave=()=>{
+        console.log("Leave Lobby");
+        another();
+    }
     return(
         <div id="uhm">
             <div id="res_bigger">
@@ -37,7 +41,11 @@ function Result({p1,p2,mine,res,play_again}){
             </div>
             <span id="result_span3"></span>
             <div id="centra">
-                <div className="hol"><button onClick={again} className="agains">Play Again</button></div>
+                <div className="hols">
+                    <button onClick={again} className="agains">Play Again</button>
+                    <span id="span10"></span>
+                    <button onClick={leave} className="agains">Leave Lobby</button>
+                </div>
             </div>
         </div>
     );

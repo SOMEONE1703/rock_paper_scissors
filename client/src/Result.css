@@ -22,6 +22,9 @@
 .span1{
     width: 20px;
 }
+#span10{
+    height:2px;
+}
 
 #result_span2{
     height: 5px;
@@ -56,14 +59,15 @@
     height: 150px;
 }
 
-.hol{
+.hols{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
+  
 }
 
 .agains{
+    width: 100px;
     font-weight: 700;
     border-radius: 15px;
     background-color: black;

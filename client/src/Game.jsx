@@ -1,7 +1,7 @@
 import "./Game.css"
 import React, { useState } from 'react';
 function Game({name,socket,id,set_choice}){
-    console.log(`game identitiy:${id}`);
+    console.log(`game identity:${id}`);
     const[choice,setChoice]=useState("temp");
     const rock=()=>{
         socket.emit("play",{username:name,id:id,play:"rock"});

@@ -1,7 +1,8 @@
 import "./Found.css"
 import React,{useState,useEffect} from 'react';
 import Ready from "./Ready";
-function Found({socket,name,id,opp}){
+function Found({socket,name,id,opp,count}){
+    //console.log("one");
     //need name,opp,socket,id
     const [me_ready,mee]=useState("red");
     const [opp_ready,oppset]=useState("red");
@@ -20,7 +21,6 @@ function Found({socket,name,id,opp}){
     const [me,setMe]=useState();
     const [opps,setOpp]=useState();
     useEffect(()=>{
-        //socket can emit a ready prime to update the colours here
         setMe(name);
         setOpp(opp);
     }, [name, opp]);
@@ -38,7 +38,7 @@ function Found({socket,name,id,opp}){
             </div>
             <span id="span2"></span>
             <div id="centra">
-                <div className="hol"><Ready name={name} socket={socket} id={id}/></div>
+                <div className="hol"><Ready name={name} socket={socket} id={id} press={count}/></div>
             </div>
         </div>
     );
