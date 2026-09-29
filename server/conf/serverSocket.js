@@ -122,10 +122,9 @@ function configureSocketIO(server) {
             if (index==-1){
                 return;
             }
-            custom_lobbies[index].ready_count=0;
-            custom_lobbies[index].p1_choice="temp";
-            custom_lobbies[index].p2_choice="temp";
-            custom_lobbies[index].plays=0;
+            // Round state is already reset when the round ends (see "play").
+            // Resetting ready_count here would wipe out an opponent who
+            // readied up before this player clicked "Play again".
         });
         socket.on("leave-lobby",(data)=>{
             const index = custom_lobbies.findIndex(car => car.lobby_id==data.id);
@@ -192,6 +191,11 @@ function configureSocketIO(server) {
                 else{
                     console.log("very very odd");
                 }
+                // Reset round state so both players can ready up for the next round
+                custom_lobbies[index].ready_count=0;
+                custom_lobbies[index].plays=0;
+                custom_lobbies[index].p1_choice="temp";
+                custom_lobbies[index].p2_choice="temp";
             }
         });
 

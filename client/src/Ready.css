@@ -1,17 +1,37 @@
-#butts{
-    font-size: 16px;
-    background-color: black;
-    color:orange;
-    border: 7px solid black;
-    font-weight: bold;
-    text-align: center;
-    width: 70%;
-    height: 30px;
-    border: 2px solid black;
-    border-radius: 10px;
-    box-shadow: 4px 4px rgba(0, 0, 0, 0.5);
-    transition: box-shadow 0.25s ease;
+.ready {
+  width: min(340px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-#butts:active{
-    box-shadow: 0 0 rgba(0, 0, 0, 0.5);
+
+.ready__btn:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.ready__btn.is-nudging {
+  animation: nudge 1.4s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  0%,
+  70%,
+  100% {
+    transform: rotate(0);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  85% {
+    transform: rotate(2deg);
+  }
+}
+
+.ready__hint {
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  min-height: 1.4em;
 }
